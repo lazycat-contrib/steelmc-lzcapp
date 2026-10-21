@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#12100e">
+    <meta name="description" content="SteelMC Minecraft 服务器连接信息与说明。">
+    <title>SteelMC Minecraft Server</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --canvas: oklch(16% 0.012 250);
+        --surface: oklch(22% 0.015 250);
+        --surface-raised: oklch(27% 0.02 250);
+        --ink: oklch(93% 0.02 250);
+        --muted: oklch(72% 0.02 250);
+        --accent: oklch(74% 0.14 215);
+        --line: color-mix(in oklch, var(--accent) 32%, transparent);
+        --radius-md: 18px;
+        --radius-lg: 26px;
+        --page: min(980px, calc(100% - 40px));
+        font-family: ui-sans-serif, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+        font-synthesis: none;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      * { box-sizing: border-box; }
+
+      html { background: var(--canvas); scroll-behavior: smooth; }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background:
+          radial-gradient(120% 80% at 50% -20%, oklch(30% 0.06 240 / 0.75), transparent 60%),
+          var(--canvas);
+        line-height: 1.6;
+      }
+
+      main {
+        width: var(--page);
+        margin: 0 auto;
+        padding: 56px 0 72px;
+        display: grid;
+        gap: 22px;
+      }
+
+      .hero {
+        display: grid;
+        gap: 12px;
+        padding: 34px 32px;
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--line);
+        background: linear-gradient(160deg, var(--surface-raised), var(--surface));
+      }
+
+      .eyebrow {
+        font-size: 12px;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(28px, 5vw, 42px);
+        letter-spacing: -0.02em;
+      }
+
+      .hero p { margin: 0; color: var(--muted); max-width: 62ch; }
+
+      .grid {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+
+      .card {
+        padding: 24px;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--line);
+        background: var(--surface);
+        display: grid;
+        gap: 12px;
+        align-content: start;
+      }
+
+      .card h2 {
+        margin: 0;
+        font-size: 15px;
+        letter-spacing: 0.02em;
+        color: var(--muted);
+        font-weight: 600;
+      }
+
+      .address {
+        display: grid;
+        gap: 4px;
+        padding: 16px 18px;
+        border-radius: 14px;
+        border: 1px solid var(--line);
+        background: var(--surface-raised);
+        color: var(--ink);
+        font: inherit;
+        text-align: left;
+        cursor: pointer;
+        transition: border-color 160ms ease, transform 160ms ease;
+      }
+
+      .address:hover { border-color: var(--accent); transform: translateY(-1px); }
+      .address:active { transform: translateY(0); }
+
+      .address-value {
+        font-family: ui-monospace, "SF Mono", Menlo, monospace;
+        font-size: 17px;
+        word-break: break-all;
+      }
+
+      .address small { color: var(--muted); font-size: 12px; }
+
+      ul { margin: 0; padding-left: 20px; color: var(--muted); }
+      li + li { margin-top: 6px; }
+      code {
+        font-family: ui-monospace, "SF Mono", Menlo, monospace;
+        font-size: 0.92em;
+        padding: 1px 6px;
+        border-radius: 6px;
+        background: oklch(30% 0.02 250);
+        color: var(--ink);
+      }
+
+      footer { color: var(--muted); font-size: 13px; text-align: center; }
+      a { color: var(--accent); }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <span class="eyebrow">Rust · Pre-alpha</span>
+        <h1>SteelMC</h1>
+        <p>
+          一个用 Rust 编写的 Minecraft Java 版服务器。世界生成已经相当完整，
+          生存玩法与实体行为仍在持续实现中——适合体验与测试，不建议替换正式服务器。
+        </p>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>连接地址</h2>
+          <button class="address" data-port="25565" type="button">
+            <span class="address-value">加载中…</span>
+            <small>点击复制 Java 版地址</small>
+          </button>
+          <p style="margin:0;color:var(--muted);font-size:13px">
+            客户端版本需与服务器一致（当前目标为 Minecraft 26.3 对应的 Java 版协议）。
+          </p>
+        </article>
+
+        <article class="card">
+          <h2>配置与数据</h2>
+          <ul>
+            <li>服务器配置：<code>config/config.toml</code></li>
+            <li>世界配置：<code>config/worlds.toml</code></li>
+            <li>存档目录：<code>saves/</code></li>
+            <li>日志目录：<code>logs/</code></li>
+          </ul>
+          <p style="margin:0;color:var(--muted);font-size:13px">
+            修改配置后重启应用生效。默认 <code>online_mode = true</code>，
+            需要正版账号登录。
+          </p>
+        </article>
+      </section>
+
+      <footer>
+        SteelMC · AGPL-3.0 ·
+        <a href="https://github.com/Steel-Foundation/SteelMC" target="_blank" rel="noreferrer">上游项目</a>
+      </footer>
+    </main>
+
+    <script>
+      const hostname = window.location.hostname || "steelmc.你的懒猫地址";
+
+      document.querySelectorAll(".address").forEach((button) => {
+        const value = `${hostname}:${button.dataset.port}`;
+        const output = button.querySelector(".address-value");
+        const hint = button.querySelector("small");
+        output.textContent = value;
+
+        button.addEventListener("click", async () => {
+          try {
+            await navigator.clipboard.writeText(value);
+            hint.textContent = "已复制";
+          } catch {
+            hint.textContent = "请长按或选中地址复制";
+          }
+
+          window.setTimeout(() => {
+            hint.textContent = "点击复制 Java 版地址";
+          }, 1800);
+        });
+      });
+    </script>
+  </body>
+</html>

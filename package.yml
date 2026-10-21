@@ -1,0 +1,20 @@
+package: community.lazycat.app.steelmc
+version: 0.16.0
+name: SteelMC
+description: "A Minecraft Java Edition server written in Rust, focused on performance and a strong foundation"
+author: Steel-Foundation
+license: AGPL-3.0
+homepage: https://github.com/Steel-Foundation/SteelMC
+min_os_version: 1.5.0
+
+permissions:
+  required:
+    - net.internet
+
+locales:
+  zh:
+    name: "SteelMC"
+    description: "用 Rust 编写的 Minecraft Java 版服务器，专注性能与扎实的基础实现；世界生成已完成，生存玩法仍在完善中（pre-alpha）"
+  en:
+    name: "SteelMC"
+    description: "A Minecraft Java Edition server written in Rust, focused on performance and a strong foundation (pre-alpha)"

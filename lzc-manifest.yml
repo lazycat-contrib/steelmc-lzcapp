@@ -1,0 +1,32 @@
+application:
+  subdomain: steelmc
+  background_task: true
+  multi_instance: false
+  upstreams:
+    - location: /
+      backend: file:///lzcapp/pkg/content/index.html
+  public_path:
+    - /
+  ingress:
+    - protocol: tcp
+      port: 25565
+      service: steel
+      description: Minecraft Java Edition
+
+services:
+  steel:
+    # upstream: ghcr.io/steel-foundation/steelmc:v0.16.0-mc26.3
+    image: ghcr.1ms.run/steel-foundation/steelmc:v0.16.0-mc26.3
+    environment:
+      - TZ=Asia/Shanghai
+    binds:
+      - /lzcapp/var/steelmc/config:/config
+      - /lzcapp/var/steelmc/saves:/saves
+      - /lzcapp/var/steelmc/logs:/.logs
+
+usage: |
+  SteelMC 在后台运行一个 Minecraft Java 版服务器（Rust 实现，当前为 pre-alpha）。
+  安装后打开应用可查看连接地址；同一网络内的 Minecraft Java 客户端使用「主机名:25565」连接。
+
+  配置文件、存档与日志分别持久化在应用数据目录的 config、saves、logs 子目录中。
+  修改 config/config.toml 后重启应用生效。

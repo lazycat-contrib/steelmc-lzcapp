@@ -1,0 +1,15 @@
+manifest: ./lzc-manifest.yml
+pkgout: ./dist
+icon: ./icon.png
+contentdir: ./content
+
+compose_override:
+  services:
+    steel:
+      security_opt:
+        - no-new-privileges:true
+      cap_drop:
+        - ALL
+      stdin_open: true
+      tty: true
+      restart: unless-stopped
