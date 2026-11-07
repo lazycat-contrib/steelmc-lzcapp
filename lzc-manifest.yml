@@ -14,8 +14,8 @@ application:
       description: Minecraft Java Edition
 services:
   steel:
-    # upstream: ghcr.io/steel-foundation/steelmc:v0.16.1-mc26.3
-    image: ghcr.1ms.run/steel-foundation/steelmc:v0.16.1-mc26.3
+    # upstream: ghcr.io/steel-foundation/steelmc:v0.17.0-mc26.3
+    image: ghcr.1ms.run/steel-foundation/steelmc:v0.17.0-mc26.3
     environment:
       - TZ=Asia/Shanghai
     binds:

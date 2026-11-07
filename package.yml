@@ -1,5 +1,5 @@
 package: community.lazycat.app.steelmc
-version: 0.16.1
+version: 0.17.0
 name: SteelMC
 description: "A Minecraft Java Edition server written in Rust, focused on performance and a strong foundation"
 author: Steel-Foundation
